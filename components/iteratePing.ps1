@@ -13,23 +13,31 @@ catch {
   }
 }
 WriteLog "CSV files imported to ping iterator program."
-$i = 0
-WriteLog "Iterating over CSV files."
+
+WriteLog "Iterating over CSV files. Pinging..."
 foreach ($csv in $allCsvs) {
+  $name = $csv.name
+  WriteLog "Selected $name. Pinging all available reservations..."
   $csv = Import-Csv -Path $csv.FullName -Delimiter "," -Verbose 
   $csv | Select-Object *,"pingSucceeded" | Export-Csv ".\temp\temp.csv"
   $tempCsv = Import-Csv -path ".\temp\temp.csv" -Delimiter "," -Verbose
   $tempcsv | ForEach-Object {
-    $connection = Test-Connection $_.IPAddress -Count 1 -Verbose
+    $ip = $_.IPAddress
+    $connection = Test-Connection $ip -Count 1 -Verbose
     if ($connection.status -eq "Success") {
+      WriteLog "$ip pinged."
       $_.pingSucceeded = $true
     }
     else {
+      WriteLog "$ip did not respond."
       $_.pingSucceeded = $false
     }
   }
-  $filename = $i
-  $i++
-  $tempCsv | Export-Csv ".\$outDir\$filename-RESULT.csv" -Force -Verbose
+  WriteLog "Outputting results of $name to $outDir..."
+  $tempCsv | Export-Csv ".\$outDir\$name-RESULT.csv" -Force -Verbose
   Remove-Item -Path ".\temp\temp.csv" -Force -Verbose
+}
+WriteLog "Succeeded! All CSVs complete. Exiting Test Connections program..."
+if ($debug -ne 1) {
+  exit
 }

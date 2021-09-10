@@ -25,8 +25,17 @@ WriteLog "======= SCRIPT START ======="
 # WriteLog "PowerShell version passes validation. Continuining..."
 
 WriteLog "Clearing previous CSV files."
-if ($deletePrevious -eq 1) {
-	Remove-Item -Path $outDir -Filter *.csv
+if ($deletePreviousResultOnRun -eq 1) {
+	try {
+		Remove-Item $outDir\*.csv -Force
+		
+	}
+	catch {
+		WriteLog "Failed to delete previous CSV files. Please make sure you do not have another process using the file."
+		if ($debug -ne 1) {
+			exit
+		}
+	}
 }
 
 WriteLog "Starting DHCP reservation fetch program..."

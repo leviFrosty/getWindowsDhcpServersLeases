@@ -7,4 +7,4 @@ $debug = 1
 # Do not change this variable unless you know what you're doing.
 $outDir = '.\out'
 $logFilePath = "$outDir\log.log"
-$deletePrevious = 1
+$deletePreviousResultOnRun = 1
