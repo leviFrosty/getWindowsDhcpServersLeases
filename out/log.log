@@ -1,0 +1,4 @@
+Attempting to import all CSV files from .\out
+Failed to import CSV files from .\out. Validate CSV files are not missing.
+CSV files imported to ping iterator program.
+Iterating over CSV files.

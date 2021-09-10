@@ -1,6 +1,7 @@
 . ./variables.ps1
 Import-Module -Name .\Modules\logging.psm1
 
+
 WriteLog "DHCP Reservation Fetch Program Starts."
 # Formats input directory
 if ($outDir -notmatch '\\$') {
@@ -76,7 +77,7 @@ foreach ($server in $validDhcpServers) {
 }
 
 
-WriteLog "Exiting..."
+WriteLog "Exiting DHCP reservation fetch program..."
 if ($debug -ne 1) {
   exit
 }
