@@ -36,7 +36,7 @@ foreach ($csv in $allCsvs) {
     }
   }
   WriteLog "Outputting results of $name to $outDir..."
-  $tempCsv | Export-Csv ".\$outDir\$name-RESULT.csv" -Force -Verbose
+  $tempCsv | Export-Csv ".\$outDir\$name-RESULT.csv" -Force -Verbose -NoTypeInformation
   Remove-Item -Path ".\temp\temp.csv" -Force -Verbose
 }
 WriteLog "Succeeded! All CSVs complete. Exiting Test Connections program..."

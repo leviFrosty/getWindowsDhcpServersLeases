@@ -39,7 +39,7 @@ catch {
 $validDhcpServers = New-Object System.Collections.ArrayList ($null)
 foreach ($dhcpServer in $totalDhcpServers) {
   $name = $dhcpServer.DnsName
-  $dhcpServer = Get-DhcpServerv4Statistics -ComputerName $name
+  $dhcpServer = Get-DhcpServerv4Statistics -ComputerName $name -Quiet
 	if ($dhcpServer.totalscopes -gt 0) {
 		[void]($validDhcpServers.Add($name))
 		WriteLog "$name is a valid DHCP server."
