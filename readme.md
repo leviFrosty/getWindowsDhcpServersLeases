@@ -9,16 +9,14 @@
   Get-DHCPLeasesinDomain
 
 - Synopsis:
-  Retrieves all DHCP leases scopes in domain.
+  Validates all DHCP reservations.
 
 - Description:
-  Retrieves all DHCP leases and scopes from all available DHCP servers the current machine can access.
+  Retrieves all DHCP reservations and attempts to ping all reservations. This validates whether a reservation is actively being used.
   Outputs data into formatted CSV files.
 
 - Version: 0.2
 
 - Help:
   To run this application, open 'start.bat'
-  The script outputs a log file in the $outDir specified.
-  If you'd like the PowerShell terminal to stay open after running, change $debug to 1. This will force the application not to exit.
-  Script must be ran on a domain as domain admin.
+  By default the application outputs to .\out\
