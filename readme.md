@@ -8,7 +8,7 @@
   LightChange Technologies
 
 - Name:
-  Get-DHCPLeasesinDomain
+  dhcpReservationValidator
 
 - Synopsis:
   Validates all DHCP reservations.
