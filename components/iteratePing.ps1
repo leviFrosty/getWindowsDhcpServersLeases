@@ -23,8 +23,10 @@ foreach ($csv in $allCsvs) {
   $tempCsv = Import-Csv -path ".\temp\temp.csv" -Delimiter "," -Verbose
   $tempcsv | ForEach-Object {
     $ip = $_.IPAddress
-    $connection = Test-Connection $ip -Count 1 -Verbose
-    if ($connection.status -eq "Success") {
+    $Timeout = 100
+    $Ping = New-Object System.Net.NetworkInformation.Ping
+    $Response = $Ping.Send($ip,$timeout)
+    if ($response.status -eq "Success") {
       WriteLog "$ip pinged."
       $_.pingSucceeded = $true
     }

@@ -5,7 +5,7 @@ Import-Module -Name .\Modules\logging.psm1
 WriteLog "DHCP Reservation Fetch Program Starts."
 # Formats input directory
 if ($outDir -notmatch '\\$') {
-	$originalDir = outDir
+	$originalDir = $outDir
 	$outDir += '\'
 	WriteLog "Formatted directory from $originalDir to $outDir"
 }
