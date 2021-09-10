@@ -28,6 +28,9 @@ WriteLog "Starting DHCP reservation fetch program..."
 .(".\components\getAllDhcpReservations.ps1")
 WriteLog "DHCP reservations fetch program completed. Back to main."
 
+WriteLog "Starting Test Connections program..."
+.(".\components\testConnections.ps1")
+WriteLog "Test Connections program completed. Back to main."
 
 
 WriteLog "======= SCRIPT END ======="
